@@ -323,17 +323,15 @@ namespace Simple_Raw_HID
         //  Close - closes a HID device
         //
         //  Inputs:
-        //      num = device to close (zero based)
+        //      (nothing)
         //  Output
         //      (nothing)
         //
-        public void Close(int num)
+        public void Close()
         {
-            HIDDevice device = GetHIDDevice(num);
-
-            if(device != null && device.IsOpen)
+            if (FirstHIDDevice != null)
             {
-                CloseHIDDevice(device);
+                FreeAllHIDDevices();
             }
         }
 
@@ -534,9 +532,12 @@ namespace Simple_Raw_HID
 
         private void CloseHIDDevice(HIDDevice device)
         {
-            device.Handle.SetHandleAsInvalid();
-            device.Handle.Dispose();
-            device.Handle = null;
+            if (device.IsOpen)
+            {
+                device.Handle.SetHandleAsInvalid();
+                device.Handle.Dispose();
+                device.Handle = null;
+            }
         }
     }
 }

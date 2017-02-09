@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple_Raw_HID", "Simple_Raw_HID\Simple_Raw_HID.csproj", "{384D4821-D46F-46B7-B0F6-2560925A0C35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple_Raw_HID-Test", "Simple_Raw_HID-Test\Simple_Raw_HID-Test.csproj", "{8653A836-3D3D-40E2-81B0-3970950D6C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{384D4821-D46F-46B7-B0F6-2560925A0C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{384D4821-D46F-46B7-B0F6-2560925A0C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{384D4821-D46F-46B7-B0F6-2560925A0C35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8653A836-3D3D-40E2-81B0-3970950D6C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8653A836-3D3D-40E2-81B0-3970950D6C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8653A836-3D3D-40E2-81B0-3970950D6C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8653A836-3D3D-40E2-81B0-3970950D6C94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
