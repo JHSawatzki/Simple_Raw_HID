@@ -78,8 +78,8 @@ namespace Simple_Raw_HID
         [StructLayout(LayoutKind.Sequential)]
         private struct HIDP_CAPS
         {
-            public short Usage;
-            public short UsagePage;
+            public ushort Usage;
+            public ushort UsagePage;
             public ushort InputReportByteLength;
             public ushort OutputReportByteLength;
             public ushort FeatureReportByteLength;
@@ -259,7 +259,15 @@ namespace Simple_Raw_HID
                     return deviceCount;
                 }
                 SP_DEVICE_INTERFACE_DETAIL_DATA details = new SP_DEVICE_INTERFACE_DETAIL_DATA();
-                details.cbSize = 4 + Marshal.SystemDefaultCharSize;
+                if (IntPtr.Size == 8)
+                {
+                    details.cbSize = 8; // for 64 bit os
+                }
+
+                else
+                {
+                    details.cbSize = 4 + Marshal.SystemDefaultCharSize; // for 32 bit os
+                }
 
                 retValue = SetupDiGetDeviceInterfaceDetail(info, ref iface, ref details, 1024, IntPtr.Zero, IntPtr.Zero);
                 if (!retValue)
@@ -294,8 +302,9 @@ namespace Simple_Raw_HID
 
                 HIDP_CAPS capabilities = new HIDP_CAPS();
 
-                if (!HidP_GetCaps(hidData, ref capabilities) ||
-                    (usagePage > 0 && capabilities.UsagePage != usagePage) ||
+                retValue = HidP_GetCaps(hidData, ref capabilities);
+
+                if (!retValue|| (usagePage > 0 && capabilities.UsagePage != usagePage) ||
                     (usage > 0 && capabilities.Usage != usage))
                 {
                     HidD_FreePreparsedData(hidData);

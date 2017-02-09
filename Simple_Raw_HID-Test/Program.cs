@@ -21,6 +21,7 @@
  * 
  */
 using System;
+using System.Threading;
 
 using Simple_Raw_HID;
 
@@ -66,7 +67,7 @@ namespace Simple_Raw_HID_Test
                     {
                         power = "Parasite";
                     }
-                    Console.Write("Sensor #" + (char)buf[1] + " of " + (char)buf[0] + ": " + temperature + "°C, Power: " + power + ", ID: ");
+                    Console.Write("Sensor #" + buf[1] + " of " + buf[0] + ": " + temperature + "°C, Power: " + power + ", ID: ");
 
                     for (int i = 0x08; i < 0x10; i++)
                     {
@@ -94,6 +95,8 @@ namespace Simple_Raw_HID_Test
                         srHID.Send(0, buf, buf.Length, 100);
                     }
                 }
+
+                Thread.Sleep(1000);
             }
         }
     }
