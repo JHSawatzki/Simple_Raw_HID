@@ -81,6 +81,7 @@ namespace Simple_Raw_HID_Test
                     ConsoleKeyInfo cki = Console.ReadKey(true);
                     if (cki.Key == ConsoleKey.Escape)
                     {
+                        srHID.Close();
                         return 0;
                     }
 

@@ -58,7 +58,7 @@ namespace Simple_Raw_HID
         private static readonly IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
         [StructLayout(LayoutKind.Sequential)]
-        public struct HIDD_ATTRIBUTES
+        private struct HIDD_ATTRIBUTES
         {
             public Int32 Size;
             public Int16 VendorID;
