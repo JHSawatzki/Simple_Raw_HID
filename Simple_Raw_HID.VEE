@@ -1,0 +1,409 @@
+(saveFormat "7.0")
+(date "Fri 10/Feb/2017 19:51:08 ")
+(veerev "9.32.17704.1")
+(platform "PC")
+(execMode v6)
+(prefExecMode v9)
+(filterNAN 0)
+(workspaceStackingOrder M)
+(sysconfig)
+(SaveCF no)
+(device 0 ROOTCONTEXT
+(assemblyRefs
+(assemblyRef 1
+(displayName
+"mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")
+(filename "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\mscorlib.dll"))
+(assemblyRef 2
+(displayName
+"Simple_Raw_HID, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")
+(desc "")
+(filename
+"C:\\Users\\Jan Henrik Sawatzki\\Documents\\GitHub\\Simple_Raw_HID\\Simple_Raw_HID\\bin\\Debug\\Simple_Raw_HID.dll"
+))
+(selectedNamespaces "System,Simple_Raw_HID,"))
+(properties
+(variableName Main)
+(variableScope glob)
+(trigMode deg)
+(nextID 22)
+(popupTitleText "Untitled")
+(popupMoveable 1)
+(deleteGlobals 0))
+(deviceList
+(device 0 DOTNETBUILDER
+(properties
+(name "Simple_Raw_HID.Simple_Raw_HID")
+(variableScope cont)
+(transactions 1
+"simple_Raw_HID = CreateInstance(\"Simple_Raw_HID\", \"Simple_Raw_HID.Simple_Raw_HID\")"
+)
+(parmInfo 4 "3" "T 0" "T 0" "T 0")
+(memberInfos 1 "Void .ctor()")
+(statics 1 "0")
+(assemblyQualifiedName
+"Simple_Raw_HID.Simple_Raw_HID, Simple_Raw_HID, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+)
+(objectName "simple_Raw_HID"))
+(interface
+(output 1
+(name "simple_Raw_HID")
+(optional yes)))
+(implementation))
+(device 1 DECLVAR
+(properties
+(name "Declare Simple_Raw_HID")
+(scope glob)
+(globalName "Simple_Raw_HID"))
+(implementation
+(value Object
+(data  ".NET OFF Simple_Raw_HID,Simple_Raw_HID.Simple_Raw_HID"))))
+(device 2 TOGLOBAL
+(properties
+(name "Set Simple_Raw_HID")
+(variableScope cont)
+(globalName "Simple_Raw_HID"))
+(interface
+(input 1
+(name "Data")
+(tag "Data")
+(lock name))))
+(device 4 DOTNETBUILDER
+(properties
+(name "Simple_Raw_HID.Simple_Raw_HID")
+(variableScope cont)
+(transactions 1 "return = simple_Raw_HID.Receive(0, ByRef buf, len, timeout)")
+(parmInfo 6 "5" "T 0" "T 0" "T 0" "T 0" "T 0")
+(memberInfos 1 "Int32 Receive(Int32, Byte[] ByRef, Int32, Int32)")
+(statics 1 "0")
+(assemblyQualifiedName
+"Simple_Raw_HID.Simple_Raw_HID, Simple_Raw_HID, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+)
+(objectName "simple_Raw_HID"))
+(interface
+(input 1
+(name "buf")
+(requires
+(datatype UInt8)
+(shape "Array 1D"))
+(lock name constraints)
+(optional yes))
+(input 2
+(name "len")
+(requires
+(datatype Int32)
+(shape "Scalar"))
+(lock name constraints)
+(optional yes))
+(input 3
+(name "timeout")
+(requires
+(datatype Int32)
+(shape "Scalar"))
+(lock name constraints)
+(optional yes))
+(output 1
+(name "buf")
+(optional yes))
+(output 2
+(name "return")
+(optional yes)))
+(implementation))
+(device 5 DOTNETBUILDER
+(properties
+(name "Simple_Raw_HID.Simple_Raw_HID")
+(variableScope cont)
+(transactions 1 "return = simple_Raw_HID.Open(1, 5824, 1152, 65451, 512)")
+(parmInfo 7 "6" "T 0" "T 0" "T 0" "T 0" "T 0" "T 0")
+(memberInfos 1 "Int32 Open(Int32, Int32, Int32, Int32, Int32)")
+(statics 1 "0")
+(assemblyQualifiedName
+"Simple_Raw_HID.Simple_Raw_HID, Simple_Raw_HID, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+)
+(objectName "simple_Raw_HID"))
+(interface
+(output 1
+(name "return")
+(optional yes)))
+(implementation))
+(device 7 TEXTDISPLAY
+(properties
+(variableScope cont))
+(interface
+(input 1
+(name "Data"))))
+(device 8 DOTNETBUILDER
+(properties
+(name "Simple_Raw_HID.Simple_Raw_HID")
+(variableScope cont)
+(transactions 1 "simple_Raw_HID.Close()")
+(parmInfo 1 "0")
+(memberInfos 1 "Void Close()")
+(statics 1 "0")
+(assemblyQualifiedName
+"Simple_Raw_HID.Simple_Raw_HID, Simple_Raw_HID, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+)
+(objectName "simple_Raw_HID"))
+(implementation))
+(device 11 ALLOCATEARRAY
+(properties
+(name "Alloc UInt8")
+(variableScope cont))
+(interface
+(output 1
+(name "Array")
+(tag "Array")))
+(implementation
+(numDims 1)
+(dimSizes "64")
+(type "UInt8")
+(initEnum "Init Value")
+(initialValue
+(data  0))
+(from 1)
+(thru 10)))
+(device 13 FORMULA
+(properties
+(name "Result conversions")
+(variableScope cont)
+(expr 3 "temperature = asReal32(System.BitConverter.ToInt16(x, 4))/10.0;"
+"sensorCount= x[0];" "sensorNum= x[1];"))
+(interface
+(input 1
+(name "x")
+(requires
+(datatype UInt8)
+(shape "Array 1D"))
+(optional yes))
+(output 1
+(name "temperature")
+(optional yes))
+(output 2
+(name "sensorCount")
+(optional yes))
+(output 3
+(name "sensorNum")
+(optional yes))))
+(device 14 CONSTANT
+(properties
+(name "Int32")
+(variableScope cont)
+(enableEditing 1))
+(interface
+(output 1
+(name "Int32")
+(lock name constraints)))
+(implementation
+(value Int32
+(data  64))
+(initValue Int32
+(data  0))))
+(device 15 CONSTANT
+(properties
+(name "Int32")
+(variableScope cont)
+(enableEditing 1))
+(interface
+(output 1
+(name "Int32")
+(lock name constraints)))
+(implementation
+(value Int32
+(data  1000))
+(initValue Int32
+(data  0))))
+(device 16 TEXTDISPLAY
+(properties
+(variableScope cont))
+(interface
+(input 1
+(name "Data"))))
+(device 17 TEXTDISPLAY
+(properties
+(variableScope cont))
+(interface
+(input 1
+(name "Data"))))
+(device 18 TEXTDISPLAY
+(properties
+(variableScope cont))
+(interface
+(input 1
+(name "Data"))))
+(device 19 TEXTDISPLAY
+(properties
+(variableScope cont))
+(interface
+(input 1
+(name "Data"))))
+(device 21 NOTE
+(properties
+(variableScope cont)
+(text2 1
+"{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1033{\\fonttbl{\\f0\\fnil\\fcharset0 Times New Roman;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\cf1\\f0\\fs24 Diesen Schritt hier in einer Loop oder im Programm an der gew\\\'fcnschten Stelle platzieren. Eventuell Timeout Wert erh\\\'f6hen.\\par\r\n}\r\n"
+)))
+(configuration
+(connect D0:1 D2:1)
+(connect D4:0 D3:0)
+(connect D7:1 D3:1)
+(connect D9:1 D3:2)
+(connect D10:1 D3:3)
+(connect D0:0 D4:0)
+(connect D4:1 D5:1)
+(connect D3:0 D6:0)
+(connect D3:1 D8:1)
+(connect D3:2 D11:1)
+(connect D8:1 D12:1)
+(connect D8:2 D13:1)
+(connect D8:3 D14:1)))
+(contextCarrier
+(wndRestoredOrigin 2 2)
+(wndRestoredExtent 702 386)
+(wndState max)
+(active detail)
+(detail
+(extent 1509 702)
+(anchorPt -40 -25)
+(configuration
+(devCarrierFor 0
+(active open)
+(icon)
+(open
+(extent 574 76))
+(terminals on)
+(pinCenter 635 120))
+(devCarrierFor 1
+(active icon)
+(icon
+(extent 159 15))
+(open
+(extent 348 124))
+(pinCenter 670 -20))
+(devCarrierFor 2
+(active icon)
+(icon
+(extent 132 15))
+(open
+(extent 98 51))
+(terminals on)
+(pinCenter 1210 120))
+(devCarrierFor 4
+(active open)
+(icon)
+(open
+(extent 364 86))
+(terminals on)
+(pinCenter 685 570))
+(devCarrierFor 5
+(active open)
+(icon)
+(open
+(extent 364 76))
+(terminals on)
+(pinCenter 670 350))
+(devCarrierFor 7
+(active open)
+(icon)
+(open
+(extent 121 22))
+(pinCenter 1150 320))
+(devCarrierFor 8
+(active open)
+(icon)
+(open
+(extent 221 74))
+(terminals on)
+(pinCenter 680 890))
+(devCarrierFor 11
+(active open)
+(icon)
+(open
+(extent 194 121))
+(terminals on)
+(pinCenter 155 570))
+(devCarrierFor 13
+(active open)
+(icon
+(extent 116 0))
+(open
+(extent 204 82))
+(terminals on)
+(pinCenter 1130 550))
+(devCarrierFor 14
+(active open)
+(icon)
+(open
+(extent 67 29)
+(showFormat int))
+(pinCenter 260 680))
+(devCarrierFor 15
+(active open)
+(icon)
+(open
+(extent 67 29)
+(showFormat int))
+(pinCenter 260 740))
+(devCarrierFor 16
+(active open)
+(icon)
+(open
+(extent 121 22))
+(pinCenter 1060 640))
+(devCarrierFor 17
+(active open)
+(icon)
+(open
+(extent 121 22))
+(pinCenter 1430 490))
+(devCarrierFor 18
+(active open)
+(icon)
+(open
+(extent 121 22))
+(pinCenter 1430 550))
+(devCarrierFor 19
+(active open)
+(icon)
+(open
+(extent 121 22))
+(pinCenter 1430 610))
+(devCarrierFor 21
+(active open)
+(icon
+(iconImage "notepad.icn"))
+(open
+(extent 410 180)
+(editing enabled))
+(pinCenter -250 580))
+(connect D0:1 D2:1
+(points 2 1044 120 1141 120))
+(connect D4:0 D3:0
+(points 2 680 390 680 506))
+(connect D7:1 D3:1
+(points 4 294 570 310 570 310 540 440 540))
+(connect D9:1 D3:2
+(points 4 296 680 320 680 320 570 440 570))
+(connect D10:1 D3:3
+(points 4 296 740 330 740 330 600 440 600))
+(connect D0:0 D4:0
+(points 2 680 160 680 291))
+(connect D4:1 D5:1
+(points 4 904 350 920 350 920 320 1087 320))
+(connect D3:0 D6:0
+(points 2 680 615 680 832))
+(connect D3:1 D8:1
+(points 2 919 550 995 550))
+(connect D3:2 D11:1
+(points 4 919 590 940 590 940 640 997 640))
+(connect D8:1 D12:1
+(points 4 1324 530 1340 530 1340 490 1367 490))
+(connect D8:2 D13:1
+(points 2 1324 550 1367 550))
+(connect D8:3 D14:1
+(points 4 1324 570 1340 570 1340 610 1367 610)))
+(stackingOrder 7 9 10 5 8 11 12 13 14 15 3 6 4 0 2 1))
+(numberFormats
+(realFormat standard)
+(realSigDigits 4)
+(realRadixSpec 4)
+(integerBase decimal))))
